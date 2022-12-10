@@ -13,7 +13,7 @@ export const Label = styledStitches("label", {
   },
   display: "block",
 });
-const InputLabel = ({ label, errorLabel, input, children,widthLabel }) => {
+const InputLabel = ({ label, errorLabel, input, children,widthLabel, errorLabelDown }) => {
   const Fieldset = styledStitches("fieldset", {
     all: "unset",
     marginBottom: 15,
@@ -33,6 +33,7 @@ const InputLabel = ({ label, errorLabel, input, children,widthLabel }) => {
         {errorLabel ? <Label color="red">({errorLabel})</Label> : null}
       </LabelAndError>
       {input ? input : children}
+      {errorLabelDown ? <Label color="red">({errorLabelDown})</Label> : null}
     </Fieldset>
   );
 };

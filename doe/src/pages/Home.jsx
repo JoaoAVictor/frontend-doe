@@ -51,7 +51,7 @@ const Banner = () => {
   `;
 
   return (
-    <Container imgUrl={imgBanner}>
+    <Container imgUrl={imgBanner} id="home">
       <Content>
         <BannerContainer>
           <BannerItems>
@@ -129,7 +129,7 @@ const Objetivo = () => {
   `;
 
   return (
-    <Container height="90vh">
+    <Container height="90vh" id="sobre">
       <Content>
         <ContainerBanner>
           <Photo img={imgMorador} />
@@ -235,7 +235,7 @@ const CardsValores = () => {
   `;
 
   return (
-    <Container height="80vh">
+    <Container height="80vh" id="problema">
       <Content>
         <ContainerBanner>
           <ContainerDescription>
@@ -355,7 +355,7 @@ const Problema = () => {
   `;
 
   return (
-    <Container height="90vh">
+    <Container height="90vh" id="objetivo">
       <Content>
         <ContainerProblema>
           <ContainerTitulo>
@@ -461,7 +461,7 @@ const CardsAvaliacao = () => {
   `;
 
   return (
-    <Container height="90vh">
+    <Container height="90vh" id="doar">
       <Content>
         <ContainerBanner>
           <Card
@@ -517,7 +517,7 @@ function Home() {
   return (
     <div>
       <Banner />
-      <Objetivo />
+      <Objetivo/>
       <CardsValores />
       <VoceSabia />
       <Problema />

@@ -1,9 +1,13 @@
 import styled from "styled-components";
-import React from "react";
+import React, { useState } from "react";
 import logo from "../assets/logoTipoDoe.png";
+import { Link as LinkScroll } from "react-scroll";
+import { Link } from "react-router-dom";
 import { Button } from "./Typography";
 
 export default function Header({ rule }) {
+  const [pageDisabled, setPageDisabled] = useState("");
+
   const StyledHeader = styled.nav`
     position: fixed;
     display: flex;
@@ -21,7 +25,18 @@ export default function Header({ rule }) {
     justify-content: flex-start;
     align-items: center;
   `;
-  const StyledDiv = styled.div``;
+  const StyledDiv = styled.button`
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    transition: 0.2s;
+    :hover {
+      color: grey;
+    }
+    :disabled {
+      color: orange;
+    }
+  `;
 
   const Image = styled.img`
     width: 75px;
@@ -35,24 +50,115 @@ export default function Header({ rule }) {
   function Options() {
     return (
       <StyledUl>
-        <StyledDiv>Home</StyledDiv>
-        <StyledDiv>Sobre</StyledDiv>
-        <StyledDiv>Problema</StyledDiv>
-        <StyledDiv>Nosso Objetivo</StyledDiv>
-        <StyledDiv>Como doar</StyledDiv>
+        <LinkScroll
+          activeClass="active"
+          to="home" // aqui você vai colocar o id do componente que vc quer ir
+          spy={true}
+          smooth={true}
+          offset={-45}
+          duration={1000}
+        >
+          <StyledDiv
+            onClick={() => {
+              setPageDisabled("Home");
+            }}
+            disabled={pageDisabled === "Home"}
+          >
+            Home
+          </StyledDiv>
+        </LinkScroll>
+
+        <LinkScroll
+          activeClass="active"
+          to="sobre" // aqui você vai colocar o id do componente que vc quer ir
+          spy={true}
+          smooth={true}
+          offset={-45}
+          duration={1000}
+        >
+          <StyledDiv
+            onClick={() => {
+              setPageDisabled("Sobre");
+            }}
+            disabled={pageDisabled === "Sobre"}
+          >
+            Sobre
+          </StyledDiv>
+        </LinkScroll>
+
+        <LinkScroll
+          activeClass="active"
+          to="problema" // aqui você vai colocar o id do componente que vc quer ir
+          spy={true}
+          smooth={true}
+          offset={-45}
+          duration={1000}
+        >
+          <StyledDiv
+            onClick={() => {
+              setPageDisabled("Problema");
+            }}
+            disabled={pageDisabled === "Problema"}
+          >
+            Problema
+          </StyledDiv>
+        </LinkScroll>
+
+        <LinkScroll
+          activeClass="active"
+          to="objetivo" // aqui você vai colocar o id do componente que vc quer ir
+          spy={true}
+          smooth={true}
+          offset={-45}
+          duration={1000}
+        >
+          <StyledDiv
+            onClick={() => {
+              setPageDisabled("Nosso-Objetivo");
+            }}
+            disabled={pageDisabled === "Nosso-Objetivo"}
+          >
+            Nosso Objetivo
+          </StyledDiv>
+        </LinkScroll>
+
+        <LinkScroll
+          activeClass="active"
+          to="doar" // aqui você vai colocar o id do componente que vc quer ir
+          spy={true}
+          smooth={true}
+          offset={-45}
+          duration={1000}
+        >
+          <StyledDiv
+            onClick={() => {
+              setPageDisabled("Como-doar");
+            }}
+            disabled={pageDisabled === "Como-doar"}
+          >
+            Como doar
+          </StyledDiv>
+        </LinkScroll>
       </StyledUl>
     );
   }
 
   return (
     <StyledHeader>
+      <Link to={"/"}>
       <Image src={logo} />
+      </Link>
       <Options />
       <ContainerButton>
-        <Button fontSize="0.95rem" >Entrar</Button>
-        <Button fontSize="0.95rem" themeButton={"gray"}>
-          Cadastra-se
-        </Button>
+        <Link to={"/login"}>
+          <Button fontSize="0.95rem">Entrar</Button>
+        </Link>
+
+        <Link to={"/cadastro"}>
+          <Button fontSize="0.95rem" themeButton={"gray"}>
+            Cadastra-se
+          </Button>
+        </Link>
       </ContainerButton>
     </StyledHeader>
   );

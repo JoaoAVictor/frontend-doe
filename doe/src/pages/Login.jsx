@@ -2,17 +2,16 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Container, { Content } from "../components/Container";
 import { Button, Input } from "../components/Typography";
-import imgFundo from "../assets/img-cadastroDoador/containerFotoDoador.png";
+import imgFundo from "../assets/imgs-login/containerfotologin.png";
 import InputLabel from "../components/InputLabel";
-import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { toast } from "react-toastify";
 import * as yup from "yup";
 import api from "../api";
 
-function Cadastro() {
+function Login() {
   const [errors, setErrors] = useState({});
-
   const ContainerForm = styled.div`
     width: 100%;
     height: 100%;
@@ -30,7 +29,7 @@ function Cadastro() {
     width: 100%;
     display: flex;
     flex-direction: row;
-
+    justify-content: center;
     gap: 2rem;
   `;
   const InputsContainerFilha = styled.div`
@@ -64,29 +63,9 @@ function Cadastro() {
     justify-content: flex-start;
   `;
 
-  const validationSenha =
-    /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])[0-9a-zA-Z$*&@#]{8,}$/;
-
   const validationSchema = yup.object({
-    nome: yup.string().required("requirido"),
-    dataNascimento: yup.string().required("requirido"),
     email: yup.string().email("Digite um email valído").required("requirido"),
-    emailConfirma: yup
-      .string()
-      .email("Digite um email valído")
-      .required("requirido")
-      .oneOf([yup.ref("email")], "os emails devem ser iguais!"),
-    senha: yup
-      .string()
-      .matches(
-        validationSenha,
-        "Use oito ou mais caracteres com uma combinação de letras, números e símbolos"
-      )
-      .required("requirido"),
-    senhaConfirma: yup
-      .string()
-      .required("requirido")
-      .oneOf([yup.ref("senha")], "as senhas devem ser iguais!"),
+    senha: yup.string().required("requirido"),
   });
 
   const { register, handleSubmit, setValue, getValues, reset } = useForm({
@@ -114,13 +93,13 @@ function Cadastro() {
     api
       .post(`/urlDaApi`, data)
       .then((res) => {
-        toast.success("Cadastro concluído!");
+        toast.success("Login concluído!");
         setTimeout(() => {
           //BAGUI PARA JOGAR PRA TELA DE LOGIN PRA LOGAR!
         }, 100);
       })
       .catch((erro) => {
-        toast.warning("Cadastro inválido!");
+        toast.warning("Login inválido!");
       });
   };
 
@@ -128,24 +107,12 @@ function Cadastro() {
     <Container backgroundSize={"46%"} imgUrl={imgFundo}>
       <Content>
         <ContainerForm>
-          <Form id="form-cadastro" onSubmit={handleSubmit(onSubmit, onError)}>
+          <Form id="form-login" onSubmit={handleSubmit(onSubmit, onError)}>
             <Titulo>
-              Junte-se a nós<span style={{ color: "salmon" }}>!</span>
+              Entrar no DOE<span style={{ color: "salmon" }}>!</span>
             </Titulo>
             <InputsContainer>
               <InputsContainerFilha>
-                <InputLabel
-                  errorLabel={errors?.nome?.message}
-                  label={"Nome *"}
-                  input={
-                    <Input
-                      name="nome"
-                      placeholder="Joao Victor"
-                      type="text"
-                      {...register("nome")}
-                    />
-                  }
-                />
                 <InputLabel
                   errorLabel={errors?.email?.message}
                   label={"Email *"}
@@ -161,7 +128,7 @@ function Cadastro() {
                   }
                 />
                 <InputLabel
-                  errorLabelDown={errors?.senha?.message}
+                  errorLabel={errors?.senha?.message}
                   label={"Senha *"}
                   input={
                     <Input
@@ -175,54 +142,12 @@ function Cadastro() {
                   }
                 />
               </InputsContainerFilha>
-              <InputsContainerFilha>
-                <InputLabel
-                  errorLabel={errors?.dataNascimento?.message}
-                  label={"DataNascimento *"}
-                  input={
-                    <Input
-                      name="dataNascimento"
-                      placeholder="************"
-                      type="date"
-                      {...register("dataNascimento")}
-                    />
-                  }
-                />
-                <InputLabel
-                  errorLabel={errors?.emailConfirma?.message}
-                  label={"Confirma Email *"}
-                  input={
-                    <Input
-                      name="emailConfirma"
-                      type="text"
-                      placeholder="Ex: email@example.com"
-                      {...register("emailConfirma")}
-                      autoComplete="off"
-                      autoFocus="off"
-                    />
-                  }
-                />
-                <InputLabel
-                  errorLabelDown={errors?.senhaConfirma?.message}
-                  label={"Confirma Senha *"}
-                  input={
-                    <Input
-                      name="senhaConfirma"
-                      placeholder="************"
-                      type="password"
-                      {...register("senhaConfirma")}
-                      autoComplete="off"
-                      autoFocus="off"
-                    />
-                  }
-                />
-              </InputsContainerFilha>
             </InputsContainer>
             <ButtonsContainer>
               <Button type="submit" themeButton={"gray"}>
-                Registrar Conta!
+                Fazer Login!
               </Button>
-              <ButtonLabel label={"Já tem uma conta? Faça Login!"} />
+              <ButtonLabel label={"Não tem uma conta? registre-se já!"} />
             </ButtonsContainer>
           </Form>
         </ContainerForm>
@@ -231,4 +156,4 @@ function Cadastro() {
   );
 }
 
-export default Cadastro;
+export default Login;
