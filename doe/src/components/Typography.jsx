@@ -41,7 +41,8 @@ const themes = {
 };
 
 export const Button = styled.button`
-  padding: 3px 6px;
+  text-transform: capitalize;
+  padding: ${({ btnSmall }) => (btnSmall ? "6px 12px" : "9px 18px")};
   border: none;
   border-radius: 5px;
   font-size: ${({ fontSize }) => (fontSize ? fontSize : null)};
@@ -92,10 +93,9 @@ export const ButtonIcon = styled.button`
     background-color: #d6d6d6;
   }
   :active {
+    background-color: #f2f2f2;
   }
 `;
-
-
 
 export const Input = styledStitches("input", {
   all: "unset",

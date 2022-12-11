@@ -10,11 +10,16 @@ import imgHomem from "../assets/img-home/homem.png";
 import imgMulher from "../assets/img-home/mulher.png";
 import imgMorado2 from "../assets/img-home/morador2.png";
 import imgMorado3 from "../assets/img-home/moradores.png";
+import addUserIcon from "../assets/img-home/addUserIcon.png";
+import doeOngIcon from "../assets/img-home/doeOngIcon.png";
+import gpsOngIcon from "../assets/img-home/gpsOngIcon.png";
 
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
-  TrashIcon,
+  SewingPinFilledIcon,
+  RocketIcon,
+  EnterIcon,
 } from "@radix-ui/react-icons";
 import Card from "../components/Card";
 
@@ -86,7 +91,7 @@ const Objetivo = () => {
     margin-left: 5%;
     height: 70%;
     background: ${({ img }) => (img ? `url(${img})` : null)};
-    background-size: 40rem;
+    background-size: 37.8rem;
     background-repeat: no-repeat;
     background-position: center;
     border-radius: 50%;
@@ -150,8 +155,13 @@ const Objetivo = () => {
             </div>
             <div>
               <Title>
-                <TrashIcon height={20} width={20} color={"black"} /> Encontre as
-                ongs mais proximas
+                <SewingPinFilledIcon
+                  height={17}
+                  width={17}
+                  color={"black"}
+                  style={{ marginRight: "0.3rem" }}
+                />
+                Encontre as ongs mais proximas
               </Title>
               <Description>
                 No doe! voce encontra ongs e campanhas mais proximas de sua
@@ -161,8 +171,13 @@ const Objetivo = () => {
             </div>
             <div>
               <Title>
-                <TrashIcon height={20} width={20} color={"black"} /> Participe
-                da comunidade
+                <RocketIcon
+                  height={17}
+                  width={17}
+                  color={"black"}
+                  style={{ marginRight: "0.3rem" }}
+                />
+                Participe da comunidade
               </Title>
               <Description>
                 Comunidades voltada as ongs, permite a entrada de milhares de
@@ -172,8 +187,13 @@ const Objetivo = () => {
             </div>
             <div>
               <Title>
-                <TrashIcon height={20} width={20} color={"black"} /> Entre na
-                rede de apoio
+                <EnterIcon
+                  height={17}
+                  width={17}
+                  color={"black"}
+                  style={{ marginRight: "0.3rem" }}
+                />
+                Entre na rede de apoio
               </Title>
               <Description>
                 Encontre pessoas que tem muito em comum: empatia e intenção de
@@ -251,9 +271,7 @@ const CardsValores = () => {
           <ContainerCards>
             <Card
               heigthCardContainer={"300px"}
-              img={
-                "https://cdn.pixabay.com/photo/2017/08/16/00/29/add-person-2646097_960_720.png"
-              }
+              icon={addUserIcon}
               fontSizeDescription={"0.8rem"}
               textAlignAuthor={"center"}
               textAlignDescription={"center"}
@@ -265,9 +283,7 @@ const CardsValores = () => {
             <Card
               heigthCardContainer={"300px"}
               fontSizeDescription={"0.8rem"}
-              img={
-                "https://cdn.pixabay.com/photo/2017/08/16/00/29/add-person-2646097_960_720.png"
-              }
+              icon={gpsOngIcon}
               textAlignAuthor={"center"}
               textAlignDescription={"center"}
               descriptionTwo={
@@ -278,9 +294,7 @@ const CardsValores = () => {
             <Card
               heigthCardContainer={"300px"}
               fontSizeDescription={"0.8rem"}
-              img={
-                "https://cdn.pixabay.com/photo/2017/08/16/00/29/add-person-2646097_960_720.png"
-              }
+              icon={doeOngIcon}
               textAlignAuthor={"center"}
               textAlignDescription={"center"}
               descriptionTwo={
@@ -312,7 +326,7 @@ const Problema = () => {
   const Title = styled.div`
     color: #000;
     font-size: ${({ fontSize }) => (fontSize ? fontSize : null)};
-    text-align: ${({ textAlign}) => ( textAlign ? textAlign : "start") };
+    text-align: ${({ textAlign }) => (textAlign ? textAlign : "start")};
     line-height: ${({ lineHeight }) => (lineHeight ? lineHeight : null)};
     margin-bottom: ${({ marginBottom }) =>
       marginBottom ? marginBottom : null};
@@ -359,7 +373,9 @@ const Problema = () => {
       <Content>
         <ContainerProblema>
           <ContainerTitulo>
-            <Title textAlign="center" fontSize="1.5rem" >Seja a esperança na vida de alguem </Title>
+            <Title textAlign="center" fontSize="1.5rem">
+              Seja a esperança na vida de alguem
+            </Title>
           </ContainerTitulo>
           <ContainerDescricao>
             <ContainerDescricaoFilha>
@@ -483,7 +499,7 @@ const CardsAvaliacao = () => {
             textAlignDescription={"center"}
             description={
               <div style={{ display: "flex", flexDirection: "column" }}>
-                <span>VEJA NOSSO IMPACTO</span>{" "}
+                <span>VEJA NOSSO IMPACTO</span>
                 <span style={{ fontSize: "0.9rem" }}>
                   Baseado em mais de 200+ usuarios
                 </span>
@@ -517,7 +533,7 @@ function Home() {
   return (
     <div>
       <Banner />
-      <Objetivo/>
+      <Objetivo />
       <CardsValores />
       <VoceSabia />
       <Problema />

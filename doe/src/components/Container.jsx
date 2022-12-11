@@ -17,10 +17,10 @@ const Container = styled.div`
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  background-size: ${({backgroundSize}) => backgroundSize ? backgroundSize : "cover"};
+  background-size: ${({ backgroundSize }) =>
+    backgroundSize ? backgroundSize : "cover"};
   background-repeat: no-repeat;
   height: ${({ height }) => (height ? height : "100vh")};
-  ${({ imgUrl }) =>
-    imgUrl ? `background-image: url(${imgUrl});` : null}
+  ${({ imgUrl }) => (imgUrl ? `background-image: url(${imgUrl});` : null)}
 `;
 export default Container;

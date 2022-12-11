@@ -13,11 +13,18 @@ export const Label = styledStitches("label", {
   },
   display: "block",
 });
-const InputLabel = ({ label, errorLabel, input, children,widthLabel, errorLabelDown }) => {
+const InputLabel = ({
+  label,
+  errorLabel,
+  input,
+  children,
+  widthLabel,
+  errorLabelDown,
+}) => {
   const Fieldset = styledStitches("fieldset", {
     all: "unset",
     marginBottom: 15,
-    width: `${ widthLabel ? widthLabel : "100%"} `,
+    width: `${widthLabel ? widthLabel : "100%"} `,
     display: "flex",
     flexDirection: "column",
     justifyContent: "flex-start",

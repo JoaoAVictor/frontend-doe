@@ -146,16 +146,18 @@ export default function Header({ rule }) {
   return (
     <StyledHeader>
       <Link to={"/"}>
-      <Image src={logo} />
+        <Image src={logo} />
       </Link>
       <Options />
       <ContainerButton>
         <Link to={"/login"}>
-          <Button fontSize="0.95rem">Entrar</Button>
+          <Button fontSize="0.95rem" btnSmall>
+            Entrar
+          </Button>
         </Link>
 
         <Link to={"/cadastro"}>
-          <Button fontSize="0.95rem" themeButton={"gray"}>
+          <Button fontSize="0.95rem" btnSmall themeButton={"gray"}>
             Cadastra-se
           </Button>
         </Link>

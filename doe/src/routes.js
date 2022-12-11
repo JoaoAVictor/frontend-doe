@@ -2,7 +2,7 @@ import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
 import Home from "./pages/Home";
 import Header from "./components/Header";
 import Cadastro from "./pages/Cadastro";
-import Login from "./pages/Login"
+import Login from "./pages/Login";
 
 function PageRoute({ page, rule, offHeader, ...props }) {
   return (

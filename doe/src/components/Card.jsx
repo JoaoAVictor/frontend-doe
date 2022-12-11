@@ -11,6 +11,7 @@ export default function Card({
   heigthCardContainer,
   fontSizeDescription,
   noShadowCardContainer,
+  icon,
   ...props
 }) {
   const CardContainer = styled.div`
@@ -48,6 +49,11 @@ export default function Card({
     box-shadow: 0px 10px 20px -5px rgba(22, 23, 24, 0.35),
       0px 10px 6px -5px rgba(22, 23, 24, 0.2);
   `;
+
+  const CardIcon = styled.img`
+    padding: 0.5em;
+  `;
+
   const CardBody = styled.div`
     display: flex;
     flex-direction: column;
@@ -70,7 +76,10 @@ export default function Card({
 
   return (
     <CardContainer {...props}>
-      <CardHeader>{img ? <CardImg image={img} /> : null}</CardHeader>
+      <CardHeader>
+        {img ? <CardImg image={img} /> : null}
+        {icon ? <CardIcon src={icon} /> : null}
+      </CardHeader>
       <CardBody>
         {description ? (
           <CardDescription> {description} </CardDescription>

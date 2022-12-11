@@ -1,15 +1,14 @@
-import './App.css';
+import "./App.css";
 import "@fontsource/inter";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Rotas from './routes';
-
+import Rotas from "./routes";
 
 function App() {
   return (
     <div className="App">
-        <Rotas/>
-<ToastContainer
+      <Rotas />
+      <ToastContainer
         position="bottom-right"
         autoClose={3000}
         hideProgressBar={false}
