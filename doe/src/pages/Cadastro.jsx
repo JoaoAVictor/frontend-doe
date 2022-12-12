@@ -112,7 +112,7 @@ function Cadastro() {
 
     console.log("data: ", data);
     api
-      .post(`/urlDaApi`, data)
+      .post(`/users`, data)
       .then((res) => {
         toast.success("Cadastro concluído!");
         setTimeout(() => {

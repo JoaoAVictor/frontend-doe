@@ -12,6 +12,9 @@ export default function Card({
   fontSizeDescription,
   noShadowCardContainer,
   icon,
+  paddingBody,
+  others,
+  banner,
   ...props
 }) {
   const CardContainer = styled.div`
@@ -22,7 +25,7 @@ export default function Card({
     width: 300px;
     height: ${heigthCardContainer ? heigthCardContainer : null};
     border-radius: 30px;
-    padding: 1rem;
+    padding: ${banner ? `0px ` : `1rem`};
     box-shadow: ${noShadowCardContainer
       ? null
       : `0px 10px 20px -5px rgba(22, 23, 24, 0.35),
@@ -32,7 +35,7 @@ export default function Card({
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0.5rem 0px;
+    padding: ${banner ? `0px` : `0.5rem 0px`};
     width: 100%;
   `;
   const CardImg = styled.div`
@@ -41,7 +44,7 @@ export default function Card({
     justify-content: center;
     width: 100px;
     height: 100px;
-    background: ${({ image }) => (image ? `url(${image})` : null)};
+    background: ${`url(${img})`};
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -56,11 +59,12 @@ export default function Card({
 
   const CardBody = styled.div`
     display: flex;
+    margin-top: ${banner ? "-1rem" : null};
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
-    padding: 0.5rem;
+    padding: ${paddingBody ? paddingBody : "0.5rem"};
     gap: 1rem;
   `;
   const CardDescription = styled.div`
@@ -74,11 +78,37 @@ export default function Card({
     font-weight: bold;
   `;
 
+  const CardBackground = styled.div`
+    display: flex;
+    align-items: center;
+    clip-path: polygon(100% 0, 100% 100%, 50% 90%, 0 100%, 0 0);
+    justify-content: center;
+    border-radius: 30px 30px 1px 1px;
+    width: 100%;
+    /* margin-bottom: 0.9rem; */
+    height: 100px;
+    background: ${banner ? `url(${banner})` : null};
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow: 0px 10px 20px -5px rgba(22, 23, 24, 0.35),
+      0px 10px 6px -5px rgba(22, 23, 24, 0.2);
+  `;
+
+  const CardOthers = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.1rem;
+  `;
+
   return (
     <CardContainer {...props}>
       <CardHeader>
-        {img ? <CardImg image={img} /> : null}
+        {img ? <CardImg /> : null}
         {icon ? <CardIcon src={icon} /> : null}
+        {banner ? <CardBackground /> : null}
       </CardHeader>
       <CardBody>
         {description ? (
@@ -88,6 +118,7 @@ export default function Card({
         {descriptionTwo ? (
           <CardDescription> {descriptionTwo} </CardDescription>
         ) : null}
+        {others ? <CardOthers>{others}</CardOthers> : null}
       </CardBody>
     </CardContainer>
   );

@@ -9,6 +9,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { toast } from "react-toastify";
 import * as yup from "yup";
 import api from "../api";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [errors, setErrors] = useState({});
@@ -86,17 +87,26 @@ function Login() {
     console.log("erro: ", err);
   };
 
-  const onSubmit = (data) => {
+  const onSubmit = (dataForm) => {
     setErrors({});
 
-    console.log("data: ", data);
+    console.log("data: ", dataForm);
     api
-      .post(`/urlDaApi`, data)
+      .get(`/users`, dataForm)
       .then((res) => {
-        toast.success("Login concluído!");
-        setTimeout(() => {
-          //BAGUI PARA JOGAR PRA TELA DE LOGIN PRA LOGAR!
-        }, 100);
+        res.data.map((element, indice) => {
+          if (
+            dataForm.email == element.email &&
+            dataForm.senha == element.senha
+          ) {
+            toast.success("Login concluído!");
+            // setTimeout(() => {
+            // }, 100);
+            return;
+          }
+        });
+        toast.warning("Login inválido!");
+        return;
       })
       .catch((erro) => {
         toast.warning("Login inválido!");
