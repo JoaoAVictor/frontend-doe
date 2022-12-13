@@ -145,6 +145,7 @@ export default function Header({ rule }) {
 
   return (
     <StyledHeader>
+      <></>
       <Link to={"/"}>
         <Image src={logo} />
       </Link>

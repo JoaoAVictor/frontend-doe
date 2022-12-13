@@ -92,24 +92,15 @@ function Login() {
 
     console.log("data: ", dataForm);
     api
-      .get(`/users`, dataForm)
+      .post(`/usuarios`, data)
       .then((res) => {
-        res.data.map((element, indice) => {
-          if (
-            dataForm.email == element.email &&
-            dataForm.senha == element.senha
-          ) {
-            toast.success("Login concluído!");
-            // setTimeout(() => {
-            // }, 100);
-            return;
-          }
-        });
-        toast.warning("Login inválido!");
-        return;
+        toast.success("Cadastro concluído!");
+        setTimeout(() => {
+          //BAGUI PARA JOGAR PRA TELA DE LOGIN PRA LOGAR!
+        }, 100);
       })
       .catch((erro) => {
-        toast.warning("Login inválido!");
+        toast.warning("Cadastro inválido!");
       });
   };
 

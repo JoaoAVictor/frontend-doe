@@ -9,6 +9,8 @@ export default function Card({
   descriptionTwo,
   textAlignDescription,
   heigthCardContainer,
+  heigthCardBackground,
+  widthCardContainer,
   fontSizeDescription,
   noShadowCardContainer,
   icon,
@@ -22,7 +24,7 @@ export default function Card({
     flex-direction: column;
     /* justify-content: center; */
     align-items: center;
-    width: 300px;
+    width: ${widthCardContainer ? widthCardContainer : "300px"};
     height: ${heigthCardContainer ? heigthCardContainer : null};
     border-radius: 30px;
     padding: ${banner ? `0px ` : `1rem`};
@@ -44,6 +46,8 @@ export default function Card({
     justify-content: center;
     width: 100px;
     height: 100px;
+    top: 0;
+    ${img && banner ? "position: absolute; z-index: 1;" : null};
     background: ${`url(${img})`};
     background-size: cover;
     background-repeat: no-repeat;
@@ -86,7 +90,7 @@ export default function Card({
     border-radius: 30px 30px 1px 1px;
     width: 100%;
     /* margin-bottom: 0.9rem; */
-    height: 100px;
+    height: ${heigthCardBackground ? heigthCardBackground : "100px"};
     background: ${banner ? `url(${banner})` : null};
     background-size: cover;
     background-repeat: no-repeat;
