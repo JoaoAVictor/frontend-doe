@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { Button } from "../../components/Typography";
 import Container, { Content } from "../../components/Container";
 import imgBanner from "../../assets/img-home/home.png";
+import { Link } from "react-router-dom";
+import { Link as LinkScroll } from "react-scroll";
 
 export default function Home() {
   const BannerContainer = styled.div`
@@ -53,8 +55,20 @@ export default function Home() {
               de rua.
             </Description>
             <ContainerButton>
-              <Button>Cadastra-se</Button>
-              <Button themeButton={"grayMirror"}>Saiba Mais</Button>
+              <Link to={"/Cadastro"}>
+                <Button>Cadastra-se</Button>
+              </Link>
+
+              <LinkScroll
+                activeClass="active"
+                to="objetivo" // aqui você vai colocar o id do componente que vc quer ir
+                spy={true}
+                smooth={true}
+                offset={-45}
+                duration={1000}
+              >
+                <Button themeButton={"grayMirror"}>Saiba Mais</Button>
+              </LinkScroll>
             </ContainerButton>
           </BannerItems>
         </BannerContainer>

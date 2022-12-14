@@ -1,4 +1,5 @@
 import React from "react";
+import Footer from "../../components/Footer";
 import ComoDoar from "./ComoDoar";
 import Home from "./Home";
 import NossoObjetivo from "./NossoObjetivo";
@@ -15,6 +16,7 @@ function Index() {
       <VoceSabia />
       <NossoObjetivo />
       <ComoDoar />
+      <Footer />
     </div>
   );
 }
