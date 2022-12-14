@@ -8,6 +8,7 @@ export default function CardCampanha({ banner, description, title, like }) {
       descriptionTwo={description}
       author={title}
       paddingBody={"2rem 0.9rem "}
+      cardBackgroundColor={"#ececec"}
       others={
         <div
           style={{

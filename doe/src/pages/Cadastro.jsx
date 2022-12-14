@@ -4,11 +4,10 @@ import Container, { Content } from "../components/Container";
 import { Button, Input } from "../components/Typography";
 import imgFundo from "../assets/img-cadastroDoador/containerFotoDoador.png";
 import InputLabel from "../components/InputLabel";
-import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import api from "../api";
+import { cadastroApi } from "../api";
 
 function Cadastro() {
   const [errors, setErrors] = useState({});
@@ -111,17 +110,17 @@ function Cadastro() {
     setErrors({});
 
     console.log("data: ", data);
-    api
-      .post(`/users`, data)
-      .then((res) => {
-        toast.success("Cadastro concluído!");
-        setTimeout(() => {
-          //BAGUI PARA JOGAR PRA TELA DE LOGIN PRA LOGAR!
-        }, 100);
-      })
-      .catch((erro) => {
-        toast.warning("Cadastro inválido!");
-      });
+
+    cadastroApi(data);
+
+    // api
+    //   .post(`/users`, data)
+    //   .then((res) => {
+    //     toast.success("Cadastro concluído!");
+    //   })
+    //   .catch((erro) => {
+    //     toast.warning("Cadastro inválido!");
+    //   });
   };
 
   return (

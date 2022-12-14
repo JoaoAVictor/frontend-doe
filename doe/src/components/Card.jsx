@@ -17,6 +17,10 @@ export default function Card({
   paddingBody,
   others,
   banner,
+  borderBottomAuthor,
+  cardBackgroundColor,
+  personalizado,
+  noPaddingCard,
   ...props
 }) {
   const CardContainer = styled.div`
@@ -27,7 +31,8 @@ export default function Card({
     width: ${widthCardContainer ? widthCardContainer : "300px"};
     height: ${heigthCardContainer ? heigthCardContainer : null};
     border-radius: 30px;
-    padding: ${banner ? `0px ` : `1rem`};
+    padding: ${banner || noPaddingCard ? `0px ` : `1rem`};
+    background-color: ${cardBackgroundColor ? cardBackgroundColor : null};
     box-shadow: ${noShadowCardContainer
       ? null
       : `0px 10px 20px -5px rgba(22, 23, 24, 0.35),
@@ -68,16 +73,18 @@ export default function Card({
     justify-content: center;
     align-items: center;
     width: 100%;
-    padding: ${paddingBody ? paddingBody : "0.5rem"};
+    padding: ${paddingBody || noPaddingCard ? paddingBody : "0.5rem"};
     gap: 1rem;
   `;
   const CardDescription = styled.div`
     width: 100%;
+    ${banner && descriptionTwo ? "overflow: auto; max-height: 150px;" : null}
     text-align: ${textAlignDescription ? textAlignDescription : "start"};
     font-size: ${fontSizeDescription ? fontSizeDescription : "1rem"};
   `;
   const CardAuthor = styled.div`
     width: 100%;
+    border-bottom: ${borderBottomAuthor ? borderBottomAuthor : null};
     text-align: ${textAlignAuthor ? textAlignAuthor : "start"};
     font-weight: bold;
   `;
@@ -109,11 +116,13 @@ export default function Card({
 
   return (
     <CardContainer {...props}>
-      <CardHeader>
-        {img ? <CardImg /> : null}
-        {icon ? <CardIcon src={icon} /> : null}
-        {banner ? <CardBackground /> : null}
-      </CardHeader>
+      {img || icon || banner ? (
+        <CardHeader>
+          {img ? <CardImg /> : null}
+          {icon ? <CardIcon src={icon} /> : null}
+          {banner ? <CardBackground /> : null}
+        </CardHeader>
+      ) : null}
       <CardBody>
         {description ? (
           <CardDescription> {description} </CardDescription>
@@ -124,6 +133,7 @@ export default function Card({
         ) : null}
         {others ? <CardOthers>{others}</CardOthers> : null}
       </CardBody>
+      {personalizado}
     </CardContainer>
   );
 }

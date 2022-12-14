@@ -6,10 +6,14 @@ export const Content = styled.div`
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  overflow: auto;
+
   /* background-color: red; */
-  height: 500px;
-  width: 1100px;
+  height: ${({ heightContent }) => (heightContent ? heightContent : "500px")};
+  width: ${({ widthContent }) => (widthContent ? widthContent : "1100px")};
+
+  margin: ${({ marginContent }) => (marginContent ? marginContent : null)};
+  border-radius: ${({ borderRadiusContent }) =>
+    borderRadiusContent ? borderRadiusContent : null};
 `;
 
 const Container = styled.div`
@@ -17,6 +21,7 @@ const Container = styled.div`
   align-items: center;
   flex-direction: column;
   justify-content: center;
+  background-color: ${({ bgColor }) => (bgColor ? bgColor : null)};
   background-size: ${({ backgroundSize }) =>
     backgroundSize ? backgroundSize : "cover"};
   background-repeat: no-repeat;

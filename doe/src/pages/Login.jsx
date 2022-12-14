@@ -6,10 +6,8 @@ import imgFundo from "../assets/imgs-login/containerfotologin.png";
 import InputLabel from "../components/InputLabel";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { toast } from "react-toastify";
 import * as yup from "yup";
-import api from "../api";
-import { useNavigate } from "react-router-dom";
+import { loginApi } from "../api";
 
 function Login() {
   const [errors, setErrors] = useState({});
@@ -91,17 +89,17 @@ function Login() {
     setErrors({});
 
     console.log("data: ", dataForm);
-    api
-      .post(`/usuarios`, data)
-      .then((res) => {
-        toast.success("Cadastro concluído!");
-        setTimeout(() => {
-          //BAGUI PARA JOGAR PRA TELA DE LOGIN PRA LOGAR!
-        }, 100);
-      })
-      .catch((erro) => {
-        toast.warning("Cadastro inválido!");
-      });
+
+    loginApi(dataForm);
+
+    // api
+    //   .post(`/usuarios`, dataForm)
+    //   .then((res) => {
+    //     toast.success("Cadastro concluído!");
+    //   })
+    //   .catch((erro) => {
+    //     toast.warning("Cadastro inválido!");
+    //   });
   };
 
   return (

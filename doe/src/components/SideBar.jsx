@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 import { Button } from "./Typography";
 import { HamburgerMenuIcon, Cross1Icon } from "@radix-ui/react-icons";
 
-export default function SideBar({ rule, image, name }) {
-  const [pageEnabled, setPageEnabled] = useState("");
+export default function SideBar({ image, name }) {
+  const [pageEnabled, setPageEnabled] = useState("Perfil");
   const [isOpen, setIsOpen] = useState(false);
 
   const StyleHeader = styled.nav`
@@ -17,6 +17,7 @@ export default function SideBar({ rule, image, name }) {
     width: ${isOpen ? "280px" : "0px"};
     height: 100vh;
     transition: 0.5s;
+    z-index: 100000;
   `;
   const StyleUl = styled.div`
     background-color: #ffffff;
@@ -25,7 +26,8 @@ export default function SideBar({ rule, image, name }) {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    border-top: 0.5px solid orange;
+    /* border-top: 0.5px solid orange; */
+    box-shadow: -0.1px 2px 2px -0.1px rgba(22, 23, 24, 0.35);
   `;
   const StyleLi = styled.div`
     display: flex;
@@ -63,7 +65,7 @@ export default function SideBar({ rule, image, name }) {
   const ContainerButtons = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 0.3rem;
+    gap: 0.5rem;
   `;
 
   const HamburgerMenuContainer = styled.div`
@@ -134,6 +136,7 @@ export default function SideBar({ rule, image, name }) {
             >
               Perfil
             </Button>
+
             <Button
               btnSmall
               themeButton="sidebar"
@@ -145,7 +148,8 @@ export default function SideBar({ rule, image, name }) {
             >
               Comunidades
             </Button>
-            <Button
+
+            {/* <Button
               btnSmall
               themeButton="sidebar"
               fontSize="0.9rem"
@@ -155,7 +159,7 @@ export default function SideBar({ rule, image, name }) {
               disabled={pageEnabled === "Postagens"}
             >
               Postagens
-            </Button>
+            </Button> */}
             <Button
               btnSmall
               themeButton="sidebar"
@@ -172,12 +176,23 @@ export default function SideBar({ rule, image, name }) {
               themeButton="sidebar"
               fontSize="0.9rem"
               onClick={() => {
+                setPageEnabled("Loja");
+              }}
+              disabled={pageEnabled === "Loja"}
+            >
+              Loja
+            </Button>
+            {/* <Button
+              btnSmall
+              themeButton="sidebar"
+              fontSize="0.9rem"
+              onClick={() => {
                 setPageEnabled("Localizar-Ongs");
               }}
               disabled={pageEnabled === "Localizar-Ongs"}
             >
               Localizar Ongs
-            </Button>
+            </Button> */}
           </ContainerButtons>
         </StyleLi>
 

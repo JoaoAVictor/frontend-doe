@@ -62,6 +62,30 @@ const themes = {
     activeBg: "#ff5555cb",
     activeColor: "#fff",
   },
+  confirm: {
+    // grayMirror
+    name: "confirm",
+    enabledBg: "#12cb18",
+    enabledColor: "#fff",
+    disabledBg: "#12cb18c9",
+    disabledColor: "#fff ",
+    hoverBg: "#12cb18a2",
+    hoverColor: "#fff",
+    activeBg: "#12cb18c9",
+    activeColor: "#fff",
+  },
+  tab: {
+    // grayMirror
+    name: "tab",
+    enabledBg: "#12cb180",
+    enabledColor: "#515151",
+    disabledBg: "#00000056",
+    disabledColor: "#fff ",
+    hoverBg: "#00000015",
+    hoverColor: "#5d5d5d",
+    activeBg: "#2f2f2f0",
+    activeColor: "#d0d0d0f6",
+  },
 };
 
 export const Button = styled.button`
@@ -112,7 +136,7 @@ export const ButtonIcon = styled.button`
   background-color: #fff;
   box-shadow: 0px 10px 20px -5px rgba(22, 23, 24, 0.35),
     0px 10px 6px -5px rgba(22, 23, 24, 0.2);
-  transition: .2s;
+  transition: 0.2s;
 
   :hover {
     background-color: #d6d6d6;
