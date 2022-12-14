@@ -21,7 +21,7 @@ export function cadastroApi(body) {
   if (apiBase.type === "java") {
     console.log("Estamos utilizando o Java");
     api
-      .post("/usuarios", data)
+      .post("/usuarios", body)
       .then((res) => {
         toast.success("Cadastro concluído!");
         console.log("cadastro java resposta:", res);
@@ -60,13 +60,14 @@ export function loginApi(body) {
             .then((respostadois) => {
               toast.success("Login concluído!");
               console.log("Login java resposta:", respostadois);
-              sessionStorage.setItem("id", respostadois.id);
-              sessionStorage.setItem("email", respostadois.email);
-              sessionStorage.setItem("nome", respostadois.nome);
+              sessionStorage.setItem("id", respostadois.data.id);
+              sessionStorage.setItem("email", respostadois.data.email);
+              sessionStorage.setItem("nome", respostadois.data.nome);
               sessionStorage.setItem(
                 "dataNascimento",
-                respostadois.dataNascimento
+                respostadois.data.dataNascimento
               );
+              window.location="/comunidades"
             })
             .catch((err) => {
               toast.warning("Login inválido!");
