@@ -38,6 +38,30 @@ const themes = {
     activeBg: "#525252",
     activeColor: "#ffff",
   },
+  sidebar: {
+    // grayMirror
+    name: "sidebar",
+    enabledBg: "#afafaf22",
+    enabledColor: "#404040",
+    disabledBg: "#FFA50195",
+    disabledColor: "#404040",
+    hoverBg: "#FFA50195",
+    hoverColor: "#404040",
+    activeBg: "#c5c5c5",
+    activeColor: "#404040",
+  },
+  cancel: {
+    // grayMirror
+    name: "cancel",
+    enabledBg: "#ff5555",
+    enabledColor: "#fff",
+    disabledBg: "#ff5555cb",
+    disabledColor: "#fff ",
+    hoverBg: "#ff5555aa",
+    hoverColor: "#fff",
+    activeBg: "#ff5555cb",
+    activeColor: "#fff",
+  },
 };
 
 export const Button = styled.button`
@@ -45,6 +69,7 @@ export const Button = styled.button`
   padding: ${({ btnSmall }) => (btnSmall ? "6px 12px" : "9px 18px")};
   border: none;
   border-radius: 5px;
+  transition: 0.25s;
   font-size: ${({ fontSize }) => (fontSize ? fontSize : null)};
   :enabled {
     background-color: ${({ themeButton }) =>
@@ -87,7 +112,7 @@ export const ButtonIcon = styled.button`
   background-color: #fff;
   box-shadow: 0px 10px 20px -5px rgba(22, 23, 24, 0.35),
     0px 10px 6px -5px rgba(22, 23, 24, 0.2);
-  transition: 0.2s;
+  transition: .2s;
 
   :hover {
     background-color: #d6d6d6;

@@ -125,7 +125,7 @@ function Cadastro() {
   };
 
   return (
-    <Container backgroundSize={"46%"} imgUrl={imgFundo}>
+    <Container backgroundSize={"100vh"} imgUrl={imgFundo}>
       <Content>
         <ContainerForm>
           <Form id="form-cadastro" onSubmit={handleSubmit(onSubmit, onError)}>

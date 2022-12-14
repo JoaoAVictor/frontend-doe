@@ -105,7 +105,7 @@ function Login() {
   };
 
   return (
-    <Container backgroundSize={"46%"} imgUrl={imgFundo}>
+    <Container backgroundSize={"100vh"} imgUrl={imgFundo}>
       <Content>
         <ContainerForm>
           <Form id="form-login" onSubmit={handleSubmit(onSubmit, onError)}>

@@ -9,6 +9,21 @@ import imgMulher from "../../assets/img-home/mulher.png";
 import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons";
 import Card from "../../components/Card";
 
+const cardVindoDoBanco = [
+  {
+    author: "@Henry silva",
+    descricao:
+      "“Eu estava com muitas coisas em casa como roupas, comida etc... acabava disperdiçando e jogando fora. Mas depois que conheci essa plataforma, achei varias ongs perto que eu nao conhecia. Com essa facilidade pude que e judar muitas pessoas com doações.”",
+    imagem: `${imgHomem}`,
+  },
+  {
+    author: "@Laisis pereira",
+    descricao:
+      "“Sou voluntaria em uma ong que ajuda pessoas em situação de rua. Esses dias estavamos pensando como nao temos divulgação e alcance para trazer mais doadores. Foi então que conheci o Doe! Arrecadamos mais nas campanhas e mais doadores”",
+    imagem: `${imgMulher}`,
+  },
+];
+
 export default function ComoDoar() {
   const ContainerBanner = styled.div`
     display: flex;
@@ -24,20 +39,17 @@ export default function ComoDoar() {
     <Container height="90vh" id="doar">
       <Content>
         <ContainerBanner>
-          <Card
-            img={imgHomem}
-            author={"@Henry silva"}
-            description={
-              "“Eu estava com muitas coisas em casa como roupas, comida etc... acabava disperdiçando e jogando fora. Mas depois que conheci essa plataforma, achei varias ongs perto que eu nao conhecia. Com essa facilidade pude que e judar muitas pessoas com doações.”"
-            }
-          />
-          <Card
-            img={imgMulher}
-            author={"@Laisis pereira"}
-            description={
-              "“Sou voluntaria em uma ong que ajuda pessoas em situação de rua. Esses dias estavamos pensando como nao temos divulgação e alcance para trazer mais doadores. Foi então que conheci o Doe! Arrecadamos mais nas campanhas e mais doadores”"
-            }
-          />
+          {cardVindoDoBanco.map((element, index) => {
+            return (
+              <Card
+                key={index}
+                img={element.imagem}
+                author={element.author}
+                description={element.descricao}
+              />
+            );
+          })}
+
           <Card
             textAlignAuthor={"center"}
             textAlignDescription={"center"}
